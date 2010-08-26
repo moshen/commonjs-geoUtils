@@ -1,5 +1,5 @@
 {
-	"name": "geoUtils",
+	"name": "geoutils",
 	"version": "0.1.0",
 	"main": "./lib/geoUtils",
 	"description": "Geographic Formulas for CommonJS",
