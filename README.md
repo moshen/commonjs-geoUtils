@@ -14,7 +14,7 @@ TODO:
 * Add package.json
 
 # Usage
-	var gu = require('geoUtils');
+	var gu = require('geoutils');
 	
     var point1 = new gu.LatLon(41.850033, -87.6500523);
 Creates a lat/lon point for Chicago, Il
