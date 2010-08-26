@@ -11,7 +11,16 @@ The library works great!
 TODO:
 
 * Tests for everything (using [vows](http://vowsjs.org/)?  Might not be good for a non-node module)
-* Add package.json
+
+# Installation
+## Node.js
+### Installing npm (node package manager)
+
+    curl http://npmjs.org/install.sh | sh
+
+### Installing geoUtils
+
+    npm install geoutils
 
 # Usage
 	var gu = require('geoutils');
