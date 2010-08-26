@@ -1,0 +1,17 @@
+{
+	"name": "geoUtils",
+	"version": "0.1.0",
+	"main": "./lib/geoUtils",
+	"description": "Geographic Formulas for CommonJS",
+	"repositories": [
+		{
+			"type": "git",
+			"url": "http://github.com/moshen/commonjs-geoUtils"
+		}
+	],
+	"engines": {
+		"node": ">=0.1.104"
+	}
+}
+
+
