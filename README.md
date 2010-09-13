@@ -10,7 +10,8 @@ The library works great!
 
 TODO:
 
-* Tests for everything (using [vows](http://vowsjs.org/)?  Might not be good for a non-node module)
+* More tests
+* Suggest something!
 
 # Installation
 ## Node.js
@@ -21,6 +22,19 @@ TODO:
 ### Installing geoUtils
 
     npm install geoutils
+
+# Tests
+    node|js|v8 tests/geoUtils.js
+	
+    geoUtils Tests:
+    
+    LatLon :
+    [PASSED] : Expecting LatLon.toString() to return 'latitude,longitude'
+    [PASSED] : Expecting LatLon.toString('dms', 4) to return '41°51′00.1188″N, 087°39′00.1883″W'
+    [PASSED] : Expecting LatLon.distanceTo() to return correctly
+    [PASSED] : Expecting LatLon.distVincenty() to return correctly
+    
+    Tests passed: 4/4
 
 # Usage
 	var gu = require('geoutils');
