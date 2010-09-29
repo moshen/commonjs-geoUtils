@@ -26,8 +26,11 @@ if ( typeof(document) === 'undefined' ){
   print = document.write;
   print(testHeader);
 } else {
+  // Throws on failed tests because I don't know how to print them
   print = function(s){
-    // Does nothing, because I have no idea where I am.
+		if( s.indexOf('[FAILED]') === 0 ){
+			throw(s);
+		}
   }
 }
 
