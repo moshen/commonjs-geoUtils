@@ -28,9 +28,9 @@ if ( typeof(document) === 'undefined' ){
 } else {
   // Throws on failed tests because I don't know how to print them
   print = function(s){
-		if( s.indexOf('[FAILED]') === 0 ){
-			throw(s);
-		}
+    if( s.indexOf('[FAILED]') === 0 ){
+      throw(s);
+    }
   }
 }
 
@@ -70,7 +70,7 @@ testing({
   test : "Expecting LatLon.toString() to return 'latitude,longitude'",
   run : function(){
     var point = new LatLon(41.850033, -87.6500523);
-    assert.equal(point.toString(), "41.850033,-87.6500523", this.test);
+    assert.equal(point.toString(), "41.850033,-87.6500523");
   }
 });
 
@@ -78,7 +78,7 @@ testing({
   test : "Expecting LatLon.toString('dms', 4) to return '41°51′00.1188″N, 087°39′00.1883″W'",
   run : function(){
     var point = new LatLon(41.850033, -87.6500523);
-    assert.equal(point.toString('dms', 4), "41°51′00.1188″N, 087°39′00.1883″W", this.test);
+    assert.equal(point.toString('dms', 4), "41°51′00.1188″N, 087°39′00.1883″W");
   }
 });
 
@@ -87,7 +87,7 @@ testing({
   run : function(){
     var point1 = new LatLon(41.850033, -87.6500523);
     var point2 = new LatLon(43.0730517, -89.4012302);
-    assert.equal(point1.distanceTo(point2), 197.8, this.test);
+    assert.equal(point1.distanceTo(point2), 197.8);
   }
 });
 
@@ -96,9 +96,73 @@ testing({
   run : function(){
     var point1 = new LatLon(41.850033, -87.6500523);
     var point2 = new LatLon(43.0730517, -89.4012302);
-    assert.equal(point1.distVincenty(point2), 197986.973, this.test);
+    assert.equal(point1.distVincenty(point2), 197986.973);
   }
 });
+
+
+print('\n\nGeo :');
+var Geo = require('../lib/geoUtils').Geo;
+
+testing({
+  test : "Expecting Geo.parseDMS('41°51′00.1188″N') to return 41.850033",
+  run : function(){
+    assert.equal(Geo.parseDMS('41°51′00.1188″N'), 41.850033);
+  }
+});
+
+testing({
+  test : "Expecting Geo.toDMS(41.850033, 'dms', 4) to return '041\u00b051\u203200.1188\u2033'",
+  run : function(){
+    assert.equal(Geo.toDMS(41.850033, 'dms', 4), '041\u00b051\u203200.1188\u2033');
+  }
+});
+
+testing({
+  test : "Expecting Geo.toLat(41.850033 ,'dms', 4) to return '41°51′00.1188″N'",
+  run : function(){
+    assert.equal(Geo.toLat(41.850033, 'dms', 4), '41°51′00.1188″N');
+  }
+});
+
+testing({
+  test : "Expecting Geo.toLon(-87.6500523 ,'dms', 4) to return '087°39′00.1883″W'",
+  run : function(){
+    assert.equal(Geo.toLon(-87.6500523, 'dms', 4), '087°39′00.1883″W');
+  }
+});
+
+testing({
+  test : "Expecting Geo.toBrng(-87.6500523 ,'dms', 4) to return '272°20′59.8117″'",
+  run : function(){
+    assert.equal(Geo.toBrng(-87.6500523, 'dms', 4), '272°20′59.8117″');
+  }
+});
+
+print('\n\nNumberic Conversions :');
+var geoUtils = require('../lib/geoUtils');
+
+testing({
+  test : "Expecting geoUtils.toRad(41.850033) to return 0.7304208679182801",
+  run : function(){
+    assert.equal(geoUtils.toRad(41.850033), 0.7304208679182801);
+  }
+});
+
+testing({
+  test : "Expecting geoUtils.toDeg(0.7304208679182801) to return 41.850033",
+  run : function(){
+    assert.equal(geoUtils.toDeg(0.7304208679182801), 41.850033);
+  }
+});
+
+testing({
+  test : "Expecting geoUtils.toPrecisionFixed(0.7304208679182801, 4) to return '0.7304'",
+  run : function(){
+    assert.equal(geoUtils.toPrecisionFixed(0.7304208679182801, 4), '0.7304');
+  }
+});
+
 
 //testing({
 //  test : "Should fial",
