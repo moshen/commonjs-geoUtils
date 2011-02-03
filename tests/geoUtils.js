@@ -139,7 +139,7 @@ testing({
   }
 });
 
-print('\n\nNumberic Conversions :');
+print('\n\nNumeric Conversions :');
 var geoUtils = require('../lib/geoUtils');
 
 testing({
