@@ -167,23 +167,23 @@ print('\n\nDistance comparisons :');
 
 testing({
   test : "Expecting geoUtils.withinBoundingBox() to return the appropriate points",
-	run : function(){
-		var points = [
-			new LatLon(42.4356, -88.4262),
-			new LatLon(42.4264, -88.2431),
-			new LatLon(42.2435, -88.4616),
-			new LatLon(42.4376, -88.4366),
-			new LatLon(42.4376, -90.4366)
-		];
-		
-		var results = geoUtils.withinBoundingBox(new LatLon(41.850033, -87.6500523), new LatLon(43.0730517, -89.4012302), points);
-		
-		for( var i in results ){
-			assert.equal( results[i] , points[i] );
-		}
+  run : function(){
+    var points = [
+      new LatLon(42.4356, -88.4262),
+      new LatLon(42.4264, -88.2431),
+      new LatLon(42.2435, -88.4616),
+      new LatLon(42.4376, -88.4366),
+      new LatLon(42.4376, -90.4366)
+    ];
+    
+    var results = geoUtils.withinBoundingBox(new LatLon(41.850033, -87.6500523), new LatLon(43.0730517, -89.4012302), points);
+    
+    for( var i in results ){
+      assert.equal( results[i] , points[i] );
+    }
 
-		assert.equal( results.length, 4);
-	}
+    assert.equal( results.length, 4);
+  }
 });
 
 
