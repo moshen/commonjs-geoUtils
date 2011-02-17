@@ -23,7 +23,7 @@ if ( typeof(document) === 'undefined' ){
   }
 } else if ( typeof(document.write) === 'function' ) {
   // Browser window?
-  print = document.write;
+  print = function(s){ document.write('<p>' + s + '</p>'); };
   print(testHeader);
 } else {
   // Throws on failed tests because I don't know how to print them
@@ -193,5 +193,5 @@ testing({
 //    assert.equal(1, 2, this.test);
 //  }
 //});
-
+//
 testing();
