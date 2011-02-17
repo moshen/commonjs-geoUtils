@@ -23,7 +23,7 @@ if ( typeof(document) === 'undefined' ){
   }
 } else if ( typeof(document.write) === 'function' ) {
   // Browser window?
-  print = function(s){ document.write('<p class="tests">' + s + '</p>'); };
+  print = function(s){ document.write('<pre class="tests">' + s + '</pre>'); };
   print(testHeader);
 } else {
   // Throws on failed tests because I don't know how to print them
