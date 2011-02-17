@@ -64,7 +64,7 @@ var assert = require('assert');
 // Now to the tests...
 
 print('LatLon :');
-var LatLon = require('../lib/geoUtils').LatLon;
+var LatLon = require('./lib/geoUtils').LatLon;
 
 testing({
   test : "Expecting LatLon.toString() to return 'latitude,longitude'",
@@ -102,7 +102,7 @@ testing({
 
 
 print('\n\nGeo :');
-var Geo = require('../lib/geoUtils').Geo;
+var Geo = require('./lib/geoUtils').Geo;
 
 testing({
   test : "Expecting Geo.parseDMS('41°51′00.1188″N') to return 41.850033",
@@ -140,7 +140,7 @@ testing({
 });
 
 print('\n\nNumeric Conversions :');
-var geoUtils = require('../lib/geoUtils');
+var geoUtils = require('./lib/geoUtils');
 
 testing({
   test : "Expecting geoUtils.toRad(41.850033) to return 0.7304208679182801",
