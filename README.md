@@ -1,7 +1,9 @@
 # Geographic Utilities for CommonJS
-Largely based (copypasta) on the excellent javascript implementations of various geographic formulas by [Chris Veness](http://www.movable-type.co.uk/scripts/)
+Largely based (copypasta) on the excellent javascript implementations of various geographic 
+formulas by [Chris Veness](http://www.movable-type.co.uk/scripts/)
 
-The original scripts have been modified slightly for usage as a CommonJS/Node.js module.  Also some functions were wrapped for clarity/consistency.
+The original scripts have been modified slightly for usage as a CommonJS/Node.js module.  
+Also some functions were wrapped for clarity/consistency.
 
 Criticism/Suggestions/Patches/Additions/PullReq's welcome.
 
@@ -34,7 +36,7 @@ TODO:
     [PASSED] : Expecting LatLon.distanceTo() to return correctly
     [PASSED] : Expecting LatLon.distVincenty() to return correctly
     
-    Tests passed: 4/4
+		...
 
 # Usage
 	var gu = require('geoutils');
