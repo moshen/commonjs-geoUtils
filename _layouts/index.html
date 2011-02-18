@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+
+  <title>moshen/commonjs-geoUtils @ GitHub</title>
+
+  <link rel="stylesheet" type="text/css" href="/style.css" />
+  <script src="showdown.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+  <script>
+  $(document).ready(function(){
+    $('input#loadreadmebutton').bind('click', function(){
+      var branch = $('select#loadreadme option:selected').val();
+
+      $.getJSON('http://query.yahooapis.com/v1/public/yql?' +
+                'q=select%20*%20from%20json%20where%20url%3D%22' +
+                encodeURIComponent('http://github.com/api/v2/json/commits/list/moshen/commonjs-geoUtils/' + branch ) +
+                '%22&format=json&callback=?',
+      
+        function(data){
+          var latestCommit = data.query.results.json.commits[0].id;
+          $.getJSON('http://query.yahooapis.com/v1/public/yql?' +
+                    'q=select%20*%20from%20json%20where%20url%3D%22' +
+                    encodeURIComponent('http://github.com/api/v2/json/blob/show/moshen/commonjs-geoUtils/' +
+                    latestCommit + '/README.md') +
+                    '%22&format=json&callback=?',
+          
+            function(data){
+              var converter = new Showdown.converter();
+              var html = converter.makeHtml(data.query.results.blob.data);
+              $('div#readme').html(html);
+            });
+      });
+    });
+  });
+  </script>
+</head>
+
+<body>
+  <a href="http://github.com/moshen/commonjs-geoUtils"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+
+  <div id="container">
+
+    <div class="download">
+      <a href="http://github.com/moshen/commonjs-geoUtils/zipball/master">
+        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
+      <a href="http://github.com/moshen/commonjs-geoUtils/tarball/master">
+        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
+    </div>
+
+    <h1><a href="http://github.com/moshen/commonjs-geoUtils">commonjs-geoUtils</a>
+      <span class="small">by <a href="http://github.com/moshen">moshen</a></span></h1>
+
+    <p>
+      If you want to load the latest README, please use the following form:
+    </p>
+    <select id="loadreadme"><option value="master" selected="selected">master</option><option value="develop">develop</option></select>
+    <input type="button" id="loadreadmebutton" value="Load README" />
+    <div id="readme">{{ content }}</div>
+
+    <h2>Download</h2>
+    <p>
+      You can download this project in either
+      <a href="http://github.com/moshen/commonjs-geoUtils/zipball/master">zip</a> or
+      <a href="http://github.com/moshen/commonjs-geoUtils/tarball/master">tar</a> formats.
+    </p>
+    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
+      by running:
+      <pre>$ git clone git://github.com/moshen/commonjs-geoUtils</pre>
+    </p>
+
+    <div class="footer">
+      get the source code on GitHub : <a href="http://github.com/moshen/commonjs-geoUtils">moshen/commonjs-geoUtils</a>
+    </div>
+
+  </div>
+
+  
+</body>
+</html>
