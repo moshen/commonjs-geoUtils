@@ -38,6 +38,8 @@ TODO:
     
 		...
 
+[Run the tests in your browser here](http://moshen.github.com/commonjs-geoUtils/tests.html)
+
 # Usage
 	var gu = require('geoutils');
 	
