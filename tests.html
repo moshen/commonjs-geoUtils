@@ -31,24 +31,18 @@
     $('input#runtests').bind('click', function(){
       var branch = $('select#runtestsoption option:selected').val();
     
-      $.getJSON('http://query.yahooapis.com/v1/public/yql?' +
-                'q=select%20*%20from%20json%20where%20url%3D%22' +
-                encodeURIComponent('http://github.com/api/v2/json/commits/list/moshen/commonjs-geoUtils/' + branch) +
-                '%22&format=json&callback=?',
+      $.getJSON('http://github.com/api/v2/json/commits/list/moshen/commonjs-geoUtils/' + branch + '?callback=?',
       
         function(data){
-          var latestCommit = data.query.results.json.commits[0].id;
+          var latestCommit = data.commits[0].id;
         
         
           var runTests = function(){
-            $.getJSON('http://query.yahooapis.com/v1/public/yql?' +
-                      'q=select%20*%20from%20json%20where%20url%3D%22' +
-                      encodeURIComponent('http://github.com/api/v2/json/blob/show/moshen/commonjs-geoUtils/' +
-                      latestCommit + '/tests/geoUtils.js') +
-                      '%22&format=json&callback=?',
+            $.getJSON('http://github.com/api/v2/json/blob/show/moshen/commonjs-geoUtils/' +
+                      latestCommit + '/tests/geoUtils.js' + '?callback=?',
           
               function(data){
-                eval(data.query.results.blob.data); // I'm so, so sorry
+                eval(data.blob.data); // I'm so, so sorry
                 $('pre.tests').each(function(index){
                   if( $(this).text().indexOf('[PASSED]') == 0 ){
                     $(this).addClass('tests-passed');
@@ -69,16 +63,13 @@
           var loadModules = function(){
             var currentModule = modulesToLoad.pop();
           
-            $.getJSON('http://query.yahooapis.com/v1/public/yql?' +
-                      'q=select%20*%20from%20json%20where%20url%3D%22' +
-                      encodeURIComponent('http://github.com/api/v2/json/blob/show/moshen/commonjs-geoUtils/' +
+            $.getJSON('http://github.com/api/v2/json/blob/show/moshen/commonjs-geoUtils/' +
                       latestCommit + '/' + 
-                      currentModule.file + '.js') +
-                      '%22&format=json&callback=?',
+                      currentModule.file + '.js' + '?callback=?',
           
               function(data){
                 require.define(currentModule.name, function(require, module, exports){
-                  eval(data.query.results.blob.data); // Again, I apologize.
+                  eval(data.blob.data); // Again, I apologize.
                 });
           
                 if( modulesToLoad.length > 0 ){

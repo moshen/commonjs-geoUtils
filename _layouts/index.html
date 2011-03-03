@@ -13,22 +13,16 @@
     $('input#loadreadmebutton').bind('click', function(){
       var branch = $('select#loadreadme option:selected').val();
 
-      $.getJSON('http://query.yahooapis.com/v1/public/yql?' +
-                'q=select%20*%20from%20json%20where%20url%3D%22' +
-                encodeURIComponent('http://github.com/api/v2/json/commits/list/moshen/commonjs-geoUtils/' + branch ) +
-                '%22&format=json&callback=?',
+      $.getJSON('http://github.com/api/v2/json/commits/list/moshen/commonjs-geoUtils/' + branch + '?callback=?',
       
         function(data){
-          var latestCommit = data.query.results.json.commits[0].id;
-          $.getJSON('http://query.yahooapis.com/v1/public/yql?' +
-                    'q=select%20*%20from%20json%20where%20url%3D%22' +
-                    encodeURIComponent('http://github.com/api/v2/json/blob/show/moshen/commonjs-geoUtils/' +
-                    latestCommit + '/README.md') +
-                    '%22&format=json&callback=?',
+          var latestCommit = data.commits[0].id;
+          $.getJSON('http://github.com/api/v2/json/blob/show/moshen/commonjs-geoUtils/' +
+                    latestCommit + '/README.md' + '?callback=?',
           
             function(data){
               var converter = new Showdown.converter();
-              var html = converter.makeHtml(data.query.results.blob.data);
+              var html = converter.makeHtml(data.blob.data);
               $('div#readme').html(html);
             });
       });
