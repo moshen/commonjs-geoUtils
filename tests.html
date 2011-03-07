@@ -1,7 +1,7 @@
 <html>
 <head>
   <title>commonjs-geoUtils In-Browser Tests</title>
-  <link rel="stylesheet" type="text/css" href="http://moshen.github.com/commonjs-geoUtils/style.css" />
+  <link rel="stylesheet" type="text/css" href="/commonjs-geoUtils/style.css" />
   <style type="text/css">
   
   pre.tests {
@@ -21,7 +21,7 @@
   
   </style>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
-  <script type="text/javascript" src="/require.js"></script>
+  <script type="text/javascript" src="/commonjs-geoUtils/require.js"></script>
   <script>
   document.write = function(s){
     $('div#test-results').append(s);
@@ -35,7 +35,6 @@
       
         function(data){
           var latestCommit = data.commits[0].id;
-        
         
           var runTests = function(){
             $.getJSON('http://github.com/api/v2/json/blob/show/moshen/commonjs-geoUtils/' +
