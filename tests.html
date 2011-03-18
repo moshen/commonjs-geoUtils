@@ -52,6 +52,7 @@
               });
           };
           
+          // Modules in order 
           var modulesToLoad = [{file : 'lib/number'  , name : 'lib/number'  },
                                {file : 'lib/geodesy' , name : 'lib/geodesy' },
                                {file : 'lib/latLon'  , name : 'lib/latLon'  },
@@ -72,7 +73,7 @@
                 });
           
                 if( modulesToLoad.length > 0 ){
-                  loadModules();
+                  loadModules(); // Called recursively because the modules throw if loaded out of order
                 }else{
                   runTests();
                 }
@@ -96,7 +97,7 @@
     <br />
     <p>If you have a browser with a javascript console, all the required modules are loaded to use geoUtils once the tests are run.  To get started, try:</p>
     <pre>var gu = require('lib/geoUtils');</pre>
-		<p>The print(); function will append to the tests div below</p>
+    <p>The print(); function will append to the tests div below</p>
     <div id="test-results"></div>
   </div>
 </body>
